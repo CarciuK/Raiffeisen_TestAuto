@@ -8,13 +8,12 @@ import static com.testframework.DriverFactory.getChromeDriver;
 
 public class BaseBrowserClass {
 
-    public static final String Baseurl = "https://www.saucedemo.com/"; //https://c24test.raiffeisen.al/Retail/home/login
+    public static final String Baseurl = "https://www.saucedemo.com/";
     public static WebDriver driver;
 
     @BeforeEach
     void setup(){
         driver = getChromeDriver();
-
     }
 
     @AfterEach

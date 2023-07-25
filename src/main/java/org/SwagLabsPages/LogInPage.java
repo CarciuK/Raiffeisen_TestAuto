@@ -12,6 +12,7 @@ import java.util.concurrent.TimeUnit;
 
 public class LogInPage extends BaseBrowserClass {
     public LogInPage(WebDriver driver) {
+
         this.driver = driver;
     }
 
@@ -39,9 +40,10 @@ public class LogInPage extends BaseBrowserClass {
 
         try {
             Thread.sleep(1000);
-        } catch (InterruptedException e) {
+            }
+        catch (InterruptedException e) {
             e.printStackTrace();
-        }
+            }
     }
 
     public boolean isLoggedIn() {
@@ -49,9 +51,10 @@ public class LogInPage extends BaseBrowserClass {
 
             WebElement homeElement = driver.findElement(By.id("inventory_container"));
             return homeElement.isDisplayed();
-        } catch (org.openqa.selenium.NoSuchElementException e) {
+            }
+        catch (org.openqa.selenium.NoSuchElementException e) {
             return false;
-        }
+            }
     }
 
     public void UserLogIn_Unsuccessful() {
@@ -63,23 +66,21 @@ public class LogInPage extends BaseBrowserClass {
         passWordField().sendKeys("secret_sauce");
 
         LogInBTN().click();
-
     }
 
     public void UserLogOut() {
         BurgerMenu().click();
         WebDriverWait wait1 = new WebDriverWait(driver, Duration.ofSeconds(10));
         LogOut_Item().click();
-
     }
     public boolean isLoggedOut() {
         try {
-
             WebElement logInElement = driver.findElement(By.id("login_button_container"));
             return logInElement.isDisplayed();
-        } catch (org.openqa.selenium.NoSuchElementException e) {
+            }
+        catch (org.openqa.selenium.NoSuchElementException e) {
             return false;
-        }
+            }
     }
 
 }

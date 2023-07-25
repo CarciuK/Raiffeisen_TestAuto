@@ -12,8 +12,6 @@ import java.util.concurrent.TimeUnit;
 
 public class TestC extends BaseBrowserClass {
 
-
-
     @Test
     void Login_Account_Successful(){
 
@@ -34,13 +32,11 @@ public class TestC extends BaseBrowserClass {
         LogInPage logInPage = new LogInPage(driver);
         logInPage.UserLogIn_Unsuccessful();
 
-    String expectedMsg = "Epic sadface: Sorry, this user has been locked out.";
-    WebElement errorMessageElement = driver.findElement(By.className("error-message-container"));
-    String actualMsg = errorMessageElement.getText();
-    Assertions.assertEquals(expectedMsg, actualMsg);
+        String expectedMsg = "Epic sadface: Sorry, this user has been locked out.";
+        WebElement errorMessageElement = driver.findElement(By.className("error-message-container"));
+        String actualMsg = errorMessageElement.getText();
+        Assertions.assertEquals(expectedMsg, actualMsg);
     }
-
-
 
     @Test
     void LogOut_Successful(){
@@ -54,7 +50,6 @@ public class TestC extends BaseBrowserClass {
         Assertions.assertTrue(logInPage.isLoggedOut());
     }
 
-
     @Test
     void Accessing_Products_Content(){
         driver.get(Baseurl);
@@ -66,13 +61,11 @@ public class TestC extends BaseBrowserClass {
         ProductsPage productsPage = new ProductsPage(driver);
         productsPage.Product_Accessibility();
 
-         String expectedTitle1 = "Sauce Labs Backpack";
-       WebElement productTitle1 = driver.findElement(By.xpath("//*[@id=\"inventory_item_container\"]/div/div/div[2]/div[1]"));
-       String actualTitle1 = productTitle1.getText();
-       Assertions.assertEquals(expectedTitle1, actualTitle1);
-
+        String expectedTitle1 = "Sauce Labs Backpack";
+        WebElement productTitle1 = driver.findElement(By.xpath("//div[@class='inventory_details_name large_size']"));
+        String actualTitle1 = productTitle1.getText();
+        Assertions.assertEquals(expectedTitle1, actualTitle1);
     }
-
 
     @Test
     void Adding_Items_To_Cart(){
@@ -87,7 +80,7 @@ public class TestC extends BaseBrowserClass {
         productsPage.Add_Item_To_Cart();
 
         String expectedProduct = "Sauce Labs Backpack";
-        WebElement productTitle = driver.findElement(By.xpath("//*[@id=\"item_4_title_link\"]/div"));
+        WebElement productTitle = driver.findElement(By.xpath("//div[@class=\"inventory_item_name\"]"));
         String actualProduct = productTitle.getText();
         Assertions.assertEquals(expectedProduct, actualProduct);
 
@@ -109,14 +102,14 @@ public class TestC extends BaseBrowserClass {
 
         WebElement itemInBasket = null;
         try {
-            itemInBasket = driver.findElement(By.xpath("//*[@id=\"item_4_title_link\"]/div"));
-        }
-        catch (org.openqa.selenium.NoSuchElementException e) { }
+            itemInBasket = driver.findElement(By.xpath("//div[@class=\"inventory_item_name\"]"));
+            }
+        catch (org.openqa.selenium.NoSuchElementException e) {
+            }
         Assertions.assertNull(itemInBasket, "Item is still in the basket.");
 
 
     }
-
 
      @Test
     void Purchase_Item(){
@@ -132,7 +125,7 @@ public class TestC extends BaseBrowserClass {
          productsPage.Purchase_Item();
 
          String expectedMsg = "Thank you for your order!";
-         WebElement errorMessageElement = driver.findElement(By.xpath("//*[@id=\"checkout_complete_container\"]/h2"));
+         WebElement errorMessageElement = driver.findElement(By.xpath("//h2[@class=\"complete-header\"]"));
          String actualMsg = errorMessageElement.getText();
          Assertions.assertEquals(expectedMsg, actualMsg);
      }
