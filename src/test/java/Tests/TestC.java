@@ -68,7 +68,23 @@ public class TestC extends BaseBrowserClass {
     }
 
     @Test
-    void Adding_Items_To_Cart(){
+    void Products_Accessibility(){
+
+        driver.get(Baseurl);
+        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+
+        LogInPage logInPage = new LogInPage(driver);
+        logInPage.UserLogIn_Successful();
+
+        ProductsPage productsPage = new ProductsPage(driver);
+        productsPage.Access_All_Products();
+
+        //assert here
+
+    }
+
+    @Test
+    void Adding_Product_To_Cart(){
 
         driver.get(Baseurl);
         driver.manage().timeouts().implicitlyWait( 5, TimeUnit.SECONDS);
@@ -87,7 +103,7 @@ public class TestC extends BaseBrowserClass {
      }
 
     @Test
-    void Removing_Items_From_Cart(){
+    void Removing_Product_From_Cart(){
 
         driver.get(Baseurl);
         driver.manage().timeouts().implicitlyWait( 5, TimeUnit.SECONDS);
@@ -112,7 +128,7 @@ public class TestC extends BaseBrowserClass {
     }
 
      @Test
-    void Purchase_Item(){
+    void Purchase_Product(){
          driver.get(Baseurl);
          driver.manage().timeouts().implicitlyWait( 5, TimeUnit.SECONDS);
 
@@ -131,15 +147,7 @@ public class TestC extends BaseBrowserClass {
      }
 
 
-     @Test
-    void Products_Filtering(){
 
-
-
-
-
-
-     }
 
 
 

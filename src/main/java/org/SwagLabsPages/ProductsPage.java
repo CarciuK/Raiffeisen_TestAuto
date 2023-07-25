@@ -82,7 +82,26 @@ public class ProductsPage extends BaseBrowserClass {
 
     }
 
+    public void Access_All_Products(){
 
+        String[] products = {"Sauce Labs Backpack","Sauce Labs Bike Light"};
+
+        for (String product : products) {
+
+            WebElement productElement = driver.findElement(By.linkText(product));
+            productElement.click();
+     //assert
+            // WebElement productDetails = driver.findElement(By.cssSelector(""));
+            //assert productDetails.isDisplayed();
+
+            driver.navigate().back();
+        }
+
+
+
+
+
+    }
 
 
 }
