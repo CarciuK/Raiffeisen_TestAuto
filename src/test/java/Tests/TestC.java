@@ -25,7 +25,7 @@ public class TestC extends BaseBrowserClass {
     }
 
     @Test
-    void Login_Account_Unsuccesful(){
+    void Login_Account_Unsuccessful(){
         driver.get(Baseurl);
         driver.manage().timeouts().implicitlyWait( 5, TimeUnit.SECONDS);
 
@@ -36,6 +36,21 @@ public class TestC extends BaseBrowserClass {
         WebElement errorMessageElement = driver.findElement(By.className("error-message-container"));
         String actualMsg = errorMessageElement.getText();
         Assertions.assertEquals(expectedMsg, actualMsg);
+    }
+
+    @Test
+    void Login_Account_Unsuccessful_EmptyField(){
+        driver.get(Baseurl);
+        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+
+        LogInPage logInPage = new LogInPage(driver);
+        logInPage.UserLogIn_Unsuccessful_EmptyFields();
+
+        String expectedMsg = "Epic sadface: Username is required";
+        WebElement errorMessageElement = driver.findElement(By.xpath("//h3[@data-test='error']"));
+        String actualMsg = errorMessageElement.getText();
+        Assertions.assertEquals(expectedMsg, actualMsg);
+
     }
 
     @Test

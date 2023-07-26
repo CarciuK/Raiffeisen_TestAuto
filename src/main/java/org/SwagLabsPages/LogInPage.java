@@ -68,6 +68,14 @@ public class LogInPage extends BaseBrowserClass {
         LogInBTN().click();
     }
 
+    public void UserLogIn_Unsuccessful_EmptyFields() {
+
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("login_button_container")));
+
+        LogInBTN().click();
+    }
+
     public void UserLogOut() {
         BurgerMenu().click();
         WebDriverWait wait1 = new WebDriverWait(driver, Duration.ofSeconds(10));
