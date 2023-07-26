@@ -91,16 +91,11 @@ public class ProductsPage extends BaseBrowserClass {
             WebElement productElement = driver.findElement(By.linkText(product));
             productElement.click();
      //assert
-            // WebElement productDetails = driver.findElement(By.cssSelector(""));
-            //assert productDetails.isDisplayed();
+            WebElement productDetails = driver.findElement(By.xpath(""));
+            assert productDetails.isDisplayed();
 
             driver.navigate().back();
         }
-
-
-
-
-
     }
 
 
