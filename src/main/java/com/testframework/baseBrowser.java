@@ -4,9 +4,9 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.WebDriver;
 
-import static com.testframework.DriverFactory.getChromeDriver;
+import static com.testframework.driverFactory.getChromeDriver;
 
-public class BaseBrowserClass {
+public class baseBrowser {
 
     public static final String Baseurl = "https://www.saucedemo.com/";
     public static WebDriver driver;

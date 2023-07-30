@@ -6,7 +6,7 @@ import org.openqa.selenium.chrome.ChromeOptions;
 
 import java.util.concurrent.TimeUnit;
 
-public class DriverFactory {
+public class driverFactory {
 
     public static WebDriver getChromeDriver(){
         System.setProperty("webdriver.chrome.driver", "C:\\chromedriver.exe");

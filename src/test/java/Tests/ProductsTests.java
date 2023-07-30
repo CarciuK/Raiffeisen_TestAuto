@@ -1,6 +1,6 @@
 package Tests;
 
-import com.testframework.BaseBrowserClass;
+import com.testframework.baseBrowser;
 import org.SwagLabsPages.LogInPage;
 import org.SwagLabsPages.ProductsPage;
 import org.junit.jupiter.api.Assertions;
@@ -8,21 +8,21 @@ import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
-import java.util.concurrent.TimeUnit;
+import java.time.Duration;
 
-public class ProductsTests extends BaseBrowserClass {
+public class ProductsTests extends baseBrowser {
 
 
     @Test
-    void Accessing_Products_Content(){
+    void accessingProducts_content(){
         driver.get(Baseurl);
-        driver.manage().timeouts().implicitlyWait( 5, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
 
         LogInPage logInPage = new LogInPage(driver);
-        logInPage.UserLogIn_Successful();
+        logInPage.userLogInSuccessful();
 
         ProductsPage productsPage = new ProductsPage(driver);
-        productsPage.Product_Accessibility();
+        productsPage.productAccessibility();
 
         String expectedTitle1 = "Sauce Labs Backpack";
         WebElement productTitle1 = driver.findElement(By.xpath("//div[@class='inventory_details_name large_size']"));
@@ -31,32 +31,30 @@ public class ProductsTests extends BaseBrowserClass {
     }
 
     @Test
-    void Products_Accessibility(){
+    void productsAccessibility(){
 
         driver.get(Baseurl);
-        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
 
         LogInPage logInPage = new LogInPage(driver);
-        logInPage.UserLogIn_Successful();
+        logInPage.userLogInSuccessful();
 
         ProductsPage productsPage = new ProductsPage(driver);
-        productsPage.Access_All_Products();
-
-        //assert here
+        productsPage.accessAllProducts();
 
     }
 
     @Test
-    void Adding_Product_To_Cart(){
+    void addingProductToCart(){
 
         driver.get(Baseurl);
-        driver.manage().timeouts().implicitlyWait( 5, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
 
         LogInPage logInPage = new LogInPage(driver);
-        logInPage.UserLogIn_Successful();
+        logInPage.userLogInSuccessful();
 
         ProductsPage productsPage = new ProductsPage(driver);
-        productsPage.Add_Item_To_Cart();
+        productsPage.addItemToCart();
 
         String expectedProduct = "Sauce Labs Backpack";
         WebElement productTitle = driver.findElement(By.xpath("//div[@class=\"inventory_item_name\"]"));
@@ -66,18 +64,18 @@ public class ProductsTests extends BaseBrowserClass {
      }
 
     @Test
-    void Removing_Product_From_Cart(){
+    void removingProductFromCart(){
 
         driver.get(Baseurl);
-        driver.manage().timeouts().implicitlyWait( 5, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
 
         LogInPage logInPage = new LogInPage(driver);
-        logInPage.UserLogIn_Successful();
+        logInPage.userLogInSuccessful();
 
         ProductsPage productsPage = new ProductsPage(driver);
-        productsPage.Add_Item_To_Cart();
+        productsPage.addItemToCart();
 
-        productsPage.Remove_Item();
+        productsPage.removeItem();
 
         WebElement itemInBasket = null;
         try {
@@ -91,17 +89,17 @@ public class ProductsTests extends BaseBrowserClass {
     }
 
      @Test
-    void Purchase_Product(){
+    void purchaseProduct(){
          driver.get(Baseurl);
-         driver.manage().timeouts().implicitlyWait( 5, TimeUnit.SECONDS);
+         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
 
          LogInPage logInPage = new LogInPage(driver);
-         logInPage.UserLogIn_Successful();
+         logInPage.userLogInSuccessful();
 
          ProductsPage productsPage = new ProductsPage(driver);
-         productsPage.Add_Item_To_Cart();
+         productsPage.addItemToCart();
 
-         productsPage.Purchase_Item();
+         productsPage.purchaseItem();
 
          String expectedMsg = "Thank you for your order!";
          WebElement errorMessageElement = driver.findElement(By.xpath("//h2[@class=\"complete-header\"]"));

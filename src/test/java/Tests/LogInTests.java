@@ -1,35 +1,35 @@
 package Tests;
 
-import com.testframework.BaseBrowserClass;
+import com.testframework.baseBrowser;
 import org.SwagLabsPages.LogInPage;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
-import java.util.concurrent.TimeUnit;
+import java.time.Duration;
 
-public class LogInTests extends BaseBrowserClass {
+public class LogInTests extends baseBrowser {
 
     @Test
-    void Login_Account_Successful(){
+    void loginAccount_successful(){
 
         driver.get(Baseurl);
-        driver.manage().timeouts().implicitlyWait( 5, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
 
         LogInPage logInPage = new LogInPage(driver);
-        logInPage.UserLogIn_Successful();
+        logInPage.userLogInSuccessful();
 
         Assertions.assertTrue(logInPage.isLoggedIn());
     }
 
     @Test
-    void Login_Account_Unsuccessful(){
+    void loginAccount_unsuccessful(){
         driver.get(Baseurl);
-        driver.manage().timeouts().implicitlyWait( 5, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
 
         LogInPage logInPage = new LogInPage(driver);
-        logInPage.UserLogIn_Unsuccessful();
+        logInPage.userLogInUnsuccessful();
 
         String expectedMsg = "Epic sadface: Sorry, this user has been locked out.";
         WebElement errorMessageElement = driver.findElement(By.className("error-message-container"));
@@ -38,12 +38,12 @@ public class LogInTests extends BaseBrowserClass {
     }
 
     @Test
-    void Login_Account_Unsuccessful_EmptyField(){
+    void loginAccount_unsuccessful_emptyField(){
         driver.get(Baseurl);
-        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
 
         LogInPage logInPage = new LogInPage(driver);
-        logInPage.UserLogIn_Unsuccessful_EmptyFields();
+        logInPage.userLogInUnsuccessfulEmptyFields();
 
         String expectedMsg = "Epic sadface: Username is required";
         WebElement errorMessageElement = driver.findElement(By.xpath("//h3[@data-test='error']"));
@@ -53,13 +53,13 @@ public class LogInTests extends BaseBrowserClass {
     }
 
     @Test
-    void LogOut_Successful(){
+    void logOut_successful(){
         driver.get(Baseurl);
-        driver.manage().timeouts().implicitlyWait( 5, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
 
         LogInPage logInPage = new LogInPage(driver);
-        logInPage.UserLogIn_Successful();
-        logInPage.UserLogOut();
+        logInPage.userLogInSuccessful();
+        logInPage.userLogOut();
 
         Assertions.assertTrue(logInPage.isLoggedOut());
     }

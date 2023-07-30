@@ -1,6 +1,6 @@
 package org.SwagLabsPages;
 
-import com.testframework.BaseBrowserClass;
+import com.testframework.baseBrowser;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -8,9 +8,8 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
-import java.util.concurrent.TimeUnit;
 
-public class LogInPage extends BaseBrowserClass {
+public class LogInPage extends baseBrowser {
     public LogInPage(WebDriver driver) {
 
         this.driver = driver;
@@ -19,15 +18,15 @@ public class LogInPage extends BaseBrowserClass {
 
     private WebElement userNameField(){return driver.findElement(By.id("user-name"));}
     private WebElement passWordField(){return driver.findElement(By.id("password"));}
-    private WebElement LogInBTN(){return driver.findElement(By.id("login-button"));}
-    private WebElement BurgerMenu(){return driver.findElement(By.id("react-burger-menu-btn"));}
-    private WebElement LogOut_Item(){return driver.findElement(By.id("logout_sidebar_link"));}
+    private WebElement logInBTN(){return driver.findElement(By.id("login-button"));}
+    private WebElement burgerMenu(){return driver.findElement(By.id("react-burger-menu-btn"));}
+    private WebElement logOutItem(){return driver.findElement(By.id("logout_sidebar_link"));}
 
 
    /*
     private WebElement userName(){return driver.findElement(By.id(""));}*/
 
-    public void UserLogIn_Successful() {
+    public void userLogInSuccessful() {
 
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("login_button_container")));
@@ -36,7 +35,7 @@ public class LogInPage extends BaseBrowserClass {
         passWordField().sendKeys("secret_sauce");
 
         WebDriverWait wait1 = new WebDriverWait(driver, Duration.ofSeconds(10));
-        LogInBTN().click();
+        logInBTN().click();
 
         try {
             Thread.sleep(1000);
@@ -57,7 +56,7 @@ public class LogInPage extends BaseBrowserClass {
             }
     }
 
-    public void UserLogIn_Unsuccessful() {
+    public void userLogInUnsuccessful() {
 
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("login_button_container")));
@@ -65,21 +64,21 @@ public class LogInPage extends BaseBrowserClass {
         userNameField().sendKeys("locked_out_user");
         passWordField().sendKeys("secret_sauce");
 
-        LogInBTN().click();
+        logInBTN().click();
     }
 
-    public void UserLogIn_Unsuccessful_EmptyFields() {
+    public void userLogInUnsuccessfulEmptyFields() {
 
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("login_button_container")));
 
-        LogInBTN().click();
+        logInBTN().click();
     }
 
-    public void UserLogOut() {
-        BurgerMenu().click();
+    public void userLogOut() {
+        burgerMenu().click();
         WebDriverWait wait1 = new WebDriverWait(driver, Duration.ofSeconds(10));
-        LogOut_Item().click();
+        logOutItem().click();
     }
     public boolean isLoggedOut() {
         try {
